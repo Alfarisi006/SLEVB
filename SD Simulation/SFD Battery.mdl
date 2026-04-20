@@ -1,0 +1,620 @@
+{UTF-8}
+Eligible Battery Supply=180
+	~	
+	~		|
+
+Base Capacity Growth=12
+	~	
+	~		|
+
+Base Investment=1
+	~	
+	~		|
+
+Base Saving Emission=1.8
+	~	
+	~		|
+
+Base Trust Building=0.12
+	~	
+	~		|
+
+Battery Lifetime=6
+	~	
+	~		|
+
+"Battery refurbishment capability (T2)"=0.85
+	~	
+	~	Original value = 0.55
+		Technical Push = 0.85
+	|
+
+"Market demand stability (E2)"=MAX ( 0 , MIN ( 1 , ((0.35*"Consumer trust and acceptance (S1)"\
+		) + (0.25*"Cost-efficiency and residual value (E3)"
+	) + (0.2*"Certification and standardization protocols (R2)") + (0.2*"Community engagement (S3)"\
+		)))  )
+	~	
+	~		|
+
+"Policy incentives for second-life deployment (R1)"=0.85
+	~	
+	~	Nilai Asli 0.55
+		
+		Regulatory Push/Integrated = 0.85
+	|
+
+Capacity Decay Fraction=0.05
+	~	
+	~		|
+
+Safety Incident Risk=MAX ( 0 , 1 - ((0.4*"SoH diagnostic accuracy (T1)") + (0.4*"Compliance with safety standards (T3)"\
+		) + (0.2*"Digital traceability systems (R3)")) )
+	~	
+	~		|
+
+Carbon Intensity Factor=0.7
+	~	
+	~		|
+
+"Certification and standardization protocols (R2)"=0.9
+	~	
+	~	Original Value = 0.65
+		
+		Regulatory Push/Integrated = 0.9
+	|
+
+"Community engagement (S3)"=0.7
+	~	
+	~	Original value = 0.45
+		Integrated pathway = 0.7
+	|
+
+"Compliance with safety standards (T3)"=0.6
+	~	
+	~	Original value = 0.6
+		Technical Push = 0.85
+	|
+
+Comulative Emission Reduction= INTEG (Emission Reduction Rate,
+		0)
+	~	
+	~		|
+
+Trust Building rate=Base Trust Building * ("Certification and standardization protocols (R2)"\
+		+"Community engagement (S3)"+"Compliance with safety standards (T3)"+"Digital traceability systems (R3)"\
+		)/4
+	~	
+	~		|
+
+"Cost-efficiency and residual value (E3)"=MAX ( 0 , MIN ( 1 , ((0.45*"Battery refurbishment capability (T2)"\
+		) + (0.15*"Policy incentives for second-life deployment (R1)"
+	) + (0.25*SLB Scale Economy) + (0.2*"Workforce skill availability (S2)") ))  )
+	~	
+	~		|
+
+Trust Erosion=Safety Incident Risk*Trust Capital*Trust Erosion Sensitivity
+	~	
+	~		|
+
+Trust Erosion Sensitivity=0.2
+	~	
+	~		|
+
+"Digital traceability systems (R3)"=0.85
+	~	
+	~	Original Value = 0.5
+		Regulatory push = 0.85
+	|
+
+"Workforce skill availability (S2)"=0.7
+	~	
+	~	Original value = 0.5
+		Technical Push = 0.7
+	|
+
+Emission Reduction Potential=MAX ( 0 , MIN ( 1 , (0.4*"Lifecycle carbon intensity reduction (EN1)"\
+		) + (0.3*"Energy efficiency of repurposed systems (EN3)"
+	) + (0.3* SLB Scale Economy))  )
+	~	
+	~		|
+
+Emission Reduction Rate=Emission Saving per Unit*SLB Deployment*Emission Reduction Potential
+	~	
+	~		|
+
+Emission Saving per Unit=Base Saving Emission*Carbon Intensity Factor*"Energy efficiency of repurposed systems (EN3)"\
+		*"Lifecycle carbon intensity reduction (EN1)"
+	~	
+	~		|
+
+"Energy efficiency of repurposed systems (EN3)"=MAX ( 0 , MIN ( 1 , (0.5*"Battery refurbishment capability (T2)"\
+		) + (0.25*"Workforce skill availability (S2)") + (0.25*"SoH diagnostic accuracy (T1)"\
+		) )  )
+	~	
+	~		|
+
+Trust building=Trust Building rate
+	~	
+	~		|
+
+"Lifecycle carbon intensity reduction (EN1)"=MAX ( 0 , MIN ( 1 , (0.4*"SoH diagnostic accuracy (T1)"\
+		) + (0.3*"Battery refurbishment capability (T2)") + (0.3*"Compliance with safety standards (T3)"\
+		) )  )
+	~	
+	~		|
+
+Trust Capital= INTEG (Trust building-Trust Erosion,
+		0.5)
+	~	
+	~		|
+
+"SoH diagnostic accuracy (T1)"=0.6
+	~	
+	~	Original Value = 0.6
+		Technical Push = 0.9
+	|
+
+Scale Reference=500
+	~	
+	~		|
+
+Deployment Rate=MIN ( Adoption Capacity , Eligible Battery Supply )  * Deployment Attractiveness
+	~	
+	~		|
+
+"Investment flow and capital availability (E1)"=Base Investment*((0.4*"Policy incentives for second-life deployment (R1)"
+	) + (0.3*"Certification and standardization protocols (R2)") + (0.3*"Consumer trust and acceptance (S1)"\
+		))
+	~	
+	~		|
+
+Capacity Formation Index=("Policy incentives for second-life deployment (R1)"+"Battery refurbishment capability (T2)"\
+		+"Investment flow and capital availability (E1)"
+	+"Digital traceability systems (R3)"
+	+"Workforce skill availability (S2)")/5
+	~	
+	~		|
+
+"Consumer trust and acceptance (S1)"=MAX ( 0 , MIN ( 1 , (0.35*"Compliance with safety standards (T3)"\
+		) + (0.35*"Certification and standardization protocols (R2)") + (0.2*"Digital traceability systems (R3)"\
+		) - (0.2*Safety Incident Risk) ) )
+	~	
+	~		|
+
+Deployment Attractiveness=MAX ( 0 , MIN ( 1 , (0.35*"Market demand stability (E2)") +\
+		 (0.25*"Consumer trust and acceptance (S1)") + (0.2*"Certification and standardization protocols (R2)"\
+		) + (0.2*"Cost-efficiency and residual value (E3)") )  )
+	~	
+	~		|
+
+SLB Scale Economy=MIN ( 1 , SLB Deployment/Scale Reference )
+	~	
+	~		|
+
+Adoption Capacity= INTEG (Capacity Building-Capacity Decay,
+		100)
+	~	
+	~		|
+
+Capacity Building=Base Capacity Growth*Capacity Formation Index
+	~	
+	~		|
+
+Capacity Decay=Adoption Capacity*Capacity Decay Fraction
+	~	
+	~		|
+
+Retirement Rate=SLB Deployment/Battery Lifetime
+	~	
+	~		|
+
+SLB Deployment= INTEG (Deployment Rate-Retirement Rate,
+		50)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Main model
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,61,2
+10,1,Adoption Capacity,713,623,49,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,SLB Deployment,972,395,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Comulative Emission Reduction,1411,616,55,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Base Capacity Growth,389,559,58,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,5,48,393,621,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,6,8,5,100,0,0,22,0,192,0,-1--1--1,,1|(465,621)|
+1,7,8,1,4,0,0,22,0,192,0,-1--1--1,,1|(601,621)|
+11,8,0,533,621,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,9,Capacity Building,533,655,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,10,48,994,623,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,11,13,1,100,0,0,22,0,192,0,-1--1--1,,1|(814,623)|
+1,12,13,10,4,0,0,22,0,192,0,-1--1--1,,1|(931,623)|
+11,13,0,873,623,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,14,Capacity Decay,873,657,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,15,48,709,393,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,16,18,15,100,0,0,22,0,192,0,-1--1--1,,1|(767,393)|
+1,17,18,2,4,0,0,22,0,192,0,-1--1--1,,1|(877,393)|
+11,18,0,822,393,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,19,Deployment Rate,822,427,47,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,20,48,1216,395,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,21,23,2,100,0,0,22,0,192,0,-1--1--1,,1|(1062,395)|
+1,22,23,20,4,0,0,22,0,192,0,-1--1--1,,1|(1162,395)|
+11,23,0,1112,395,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,24,Retirement Rate,1112,429,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,25,48,1139,617,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,26,28,25,100,0,0,22,0,192,0,-1--1--1,,1|(1197,617)|
+1,27,28,3,4,0,0,22,0,192,0,-1--1--1,,1|(1307,617)|
+11,28,0,1252,617,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,29,Emission Reduction Rate,1252,651,64,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,30,4,9,1,0,0,0,0,192,0,-1--1--1,,1|(494,557)|
+10,31,Capacity Decay Fraction,906,749,62,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,32,1,14,1,0,0,0,0,192,0,-1--1--1,,1|(809,675)|
+1,33,31,14,1,0,0,0,0,192,0,-1--1--1,,1|(939,705)|
+10,34,Eligible Battery Supply,724,324,58,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,35,34,19,1,0,0,0,0,192,0,-1--1--1,,1|(798,354)|
+10,36,Battery Lifetime,1222,321,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,37,2,24,1,0,0,0,0,192,0,-1--1--1,,1|(1034,359)|
+1,38,36,24,1,0,0,0,0,192,0,-1--1--1,,1|(1123,394)|
+1,39,1,19,1,0,0,0,0,192,0,-1--1--1,,1|(831,507)|
+1,40,2,29,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,41,Capacity Formation Index,471,786,55,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,42,41,9,1,0,0,0,0,192,0,-1--1--1,,1|(468,715)|
+10,43,Deployment Attractiveness,664,483,42,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,44,43,19,1,0,0,0,0,192,0,-1--1--1,,1|(754,463)|
+10,45,Emission Saving per Unit,1204,763,56,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,46,45,29,1,0,0,0,0,192,0,-1--1--1,,1|(1259,724)|
+10,47,Trust Capital,983,917,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,48,48,708,921,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,49,51,48,100,0,0,22,0,192,0,-1--1--1,,1|(769,921)|
+1,50,51,47,4,0,0,22,0,192,0,-1--1--1,,1|(885,921)|
+11,51,0,827,921,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,52,Trust building,827,955,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,53,48,1239,917,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,54,56,47,100,0,0,22,0,192,0,-1--1--1,,1|(1076,917)|
+1,55,56,53,4,0,0,22,0,192,0,-1--1--1,,1|(1182,917)|
+11,56,0,1129,917,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,57,Trust Erosion,1129,951,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Emission Reduction Potential,1110,687,55,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,59,58,29,1,0,0,0,0,192,0,-1--1--1,,1|(1190,690)|
+10,60,Safety Incident Risk,1086,1063,57,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,61,Trust Erosion Sensitivity,1286,1035,62,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,62,60,57,1,0,0,0,0,192,0,-1--1--1,,1|(1121,1002)|
+1,63,61,57,1,0,0,0,0,192,0,-1--1--1,,1|(1222,984)|
+1,64,47,57,1,0,0,0,0,192,0,-1--1--1,,1|(1035,848)|
+10,65,Trust Building rate,714,1012,55,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,66,65,52,1,0,0,0,0,192,0,-1--1--1,,1|(807,1019)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Capacity Formation
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,Capacity Formation Index,353,322,66,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Battery refurbishment capability (T2)",188,227,65,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(298,250)|
+10,4,"Investment flow and capital availability (E1)",485,440,50,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,5,4,1,1,0,0,0,0,192,0,-1--1--1,,1|(419,407)|
+10,6,"Digital traceability systems (R3)",274,510,51,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,7,6,1,1,0,0,0,0,192,0,-1--1--1,,1|(328,433)|
+10,8,"Policy incentives for second-life deployment (R1)",119,397,61,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,9,8,1,1,0,0,0,0,192,0,-1--1--1,,1|(231,375)|
+10,10,"Workforce skill availability (S2)",613,318,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,11,10,1,1,0,0,0,0,192,0,-1--1--1,,1|(563,279)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Investment
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Investment flow and capital availability (E1)",355,190,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Base Investment,208,258,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Policy incentives for second-life deployment (R1)",254,356,61,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Certification and standardization protocols (R2)",506,288,76,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(231,225)|
+1,6,4,1,1,0,0,0,0,192,0,-1--1--1,,1|(462,217)|
+1,7,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(309,302)|
+10,8,"Consumer trust and acceptance (S1)",422,379,56,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,9,8,1,1,0,0,0,0,192,0,-1--1--1,,1|(400,330)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Safety Risk
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,Safety Incident Risk,340,217,52,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"SoH diagnostic accuracy (T1)",157,332,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Compliance with safety standards (T3)",384,379,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Digital traceability systems (R3)",574,285,48,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(246,263)|
+1,6,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(356,299)|
+1,7,4,1,1,0,0,0,0,192,0,-1--1--1,,1|(524,221)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Trust
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,82,2
+10,1,"Consumer trust and acceptance (S1)",628,503,53,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Compliance with safety standards (T3)",339,632,63,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,3,"Certification and standardization protocols (R2)",475,802,66,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,4,"Digital traceability systems (R3)",734,736,51,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,5,Safety Incident Risk,912,611,57,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,6,2,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,7,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(562,666)|
+1,8,4,1,1,0,0,0,0,192,0,-1--1--1,,1|(658,634)|
+1,9,5,1,1,0,0,0,0,192,0,-1--1--1,,1|(731,591)|
+10,10,Trust Building rate,615,163,49,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,11,Base Trust Building,374,159,51,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,"Compliance with safety standards (T3)",431,245,63,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,13,"Certification and standardization protocols (R2)",618,339,66,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,14,"Digital traceability systems (R3)",795,241,51,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,15,"Community engagement (S3)",855,150,48,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,16,11,10,1,0,0,0,0,192,0,-1--1--1,,1|(522,129)|
+1,17,12,10,1,0,0,0,0,192,0,-1--1--1,,1|(586,224)|
+1,18,13,10,1,0,0,0,0,192,0,-1--1--1,,1|(624,287)|
+1,19,14,10,1,0,0,0,0,192,0,-1--1--1,,1|(661,217)|
+1,20,15,10,1,0,0,0,0,192,0,-1--1--1,,1|(729,143)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Cost Efficiency
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,SLB Scale Economy,362,223,51,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,SLB Deployment,232,333,51,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,3,Scale Reference,454,319,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(250,273)|
+1,5,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(486,241)|
+10,6,"Cost-efficiency and residual value (E3)",365,491,50,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,"Battery refurbishment capability (T2)",644,611,61,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,8,"Policy incentives for second-life deployment (R1)",369,661,61,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,9,SLB Scale Economy,111,594,57,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,10,9,6,1,0,0,0,0,192,0,-1--1--1,,1|(231,526)|
+1,11,8,6,1,0,0,0,0,192,0,-1--1--1,,1|(384,572)|
+1,12,7,6,1,0,0,0,0,192,0,-1--1--1,,1|(532,518)|
+10,13,"Workforce skill availability (S2)",114,492,44,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,14,13,6,1,0,0,0,0,192,0,-1--1--1,,1|(273,474)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Market Demand
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Market demand stability (E2)",404,313,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Consumer trust and acceptance (S1)",172,438,56,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,3,"Cost-efficiency and residual value (E3)",421,526,53,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,4,"Certification and standardization protocols (R2)",682,413,66,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,5,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(260,346)|
+1,6,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(443,424)|
+1,7,4,1,1,0,0,0,0,192,0,-1--1--1,,1|(596,330)|
+10,8,"Community engagement (S3)",178,294,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,8,1,1,0,0,0,0,192,0,-1--1--1,,1|(309,269)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Deployment Attractiveness
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,23,2
+10,1,Deployment Attractiveness,1793,1710,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Market demand stability (E2)",1517,1785,66,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,3,"Consumer trust and acceptance (S1)",1665,1924,56,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,4,"Certification and standardization protocols (R2)",1921,1919,66,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,5,"Cost-efficiency and residual value (E3)",2109,1738,53,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,6,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(1584,1718)|
+1,7,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(1763,1791)|
+1,8,4,1,1,0,0,0,0,192,0,-1--1--1,,1|(1900,1831)|
+1,9,5,1,1,0,0,0,0,192,0,-1--1--1,,1|(1927,1688)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Emission Saving
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,42,2
+10,1,Emission Saving per Unit,620,1158,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Base Saving Emission,415,1327,56,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Carbon Intensity Factor,347,1160,61,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(521,1121)|
+1,5,2,1,1,0,0,0,0,192,0,-1--1--1,,1|(481,1236)|
+10,6,"Lifecycle carbon intensity reduction (EN1)",545,743,65,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,"SoH diagnostic accuracy (T1)",769,798,65,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,8,"Battery refurbishment capability (T2)",293,813,61,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,9,"Compliance with safety standards (T3)",558,874,63,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,10,8,6,1,0,0,0,0,192,0,-1--1--1,,1|(391,738)|
+1,11,9,6,1,0,0,0,0,192,0,-1--1--1,,1|(555,829)|
+1,12,7,6,1,0,0,0,0,192,0,-1--1--1,,1|(722,750)|
+10,13,"Energy efficiency of repurposed systems (EN3)",536,579,54,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,14,8,13,1,0,0,0,0,192,0,-1--1--1,,1|(352,710)|
+10,15,"Workforce skill availability (S2)",289,569,44,20,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,16,15,13,1,0,0,0,0,192,0,-1--1--1,,1|(375,523)|
+1,17,7,13,1,0,0,0,0,192,0,-1--1--1,,1|(749,638)|
+10,18,Emission Reduction Potential,1163,657,52,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,19,"Lifecycle carbon intensity reduction (EN1)",964,722,50,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,20,"Energy efficiency of repurposed systems (EN3)",1371,772,54,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,21,Carbon Intensity Factor,1178,803,48,20,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,22,19,18,1,0,0,0,0,192,0,-1--1--1,,1|(1005,668)|
+1,23,20,18,1,0,0,0,0,192,0,-1--1--1,,1|(1332,684)|
+10,24,SLB Scale Economy,1158,790,57,13,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,25,24,18,1,0,0,0,0,192,0,-1--1--1,,1|(1162,733)|
+10,26,"Energy efficiency of repurposed systems (EN3)",878,1177,54,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,27,"Lifecycle carbon intensity reduction (EN1)",740,1322,50,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,28,27,1,1,0,0,0,0,192,0,-1--1--1,,1|(692,1237)|
+1,29,26,1,1,0,0,0,0,192,0,-1--1--1,,1|(788,1145)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Figures
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,54,2
+12,1,0,806,280,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Adoption_Capacity
+12,2,0,1458,280,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+SLB_Deployment
+12,3,0,803,726,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Trust_Capital
+12,4,0,2139,278,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Comulative_Emission_Reduction
+12,5,0,1739,1174,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Safety_Incident_Risk
+12,6,0,504,1175,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Market_Demand_Stability
+12,7,0,1123,1177,300,200,0,15,0,0,1,0,0,0,0,0,0,0,0,0
+Emission_Reduction_Potential
+///---\\\
+:GRAPH Adoption_Capacity
+:TITLE Adoption Capacity
+:SCALE
+:VAR Adoption Capacity
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR Adoption Capacity
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR Adoption Capacity
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR Adoption Capacity
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+
+:GRAPH SLB_Deployment
+:TITLE SLB Deployment
+:SCALE
+:VAR SLB Deployment
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR SLB Deployment
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR SLB Deployment
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR SLB Deployment
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+
+:GRAPH Trust_Capital
+:TITLE Trust Capital
+:SCALE
+:VAR Trust Capital
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR Trust Capital
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR Trust Capital
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR Trust Capital
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+
+:GRAPH Comulative_Emission_Reduction
+:TITLE Comulative Emission Reduction
+:SCALE
+:VAR Comulative Emission Reduction
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR Comulative Emission Reduction
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR Comulative Emission Reduction
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR Comulative Emission Reduction
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+
+:GRAPH Safety_Incident_Risk
+:TITLE Safety Incident Risk
+:SCALE
+:VAR Safety Incident Risk
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR Safety Incident Risk
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR Safety Incident Risk
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR Safety Incident Risk
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+
+:GRAPH Market_Demand_Stability
+:TITLE Market Demand Stability
+:SCALE
+:VAR "Market demand stability (E2)"
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR "Market demand stability (E2)"
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR "Market demand stability (E2)"
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR "Market demand stability (E2)"
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+
+:GRAPH Emission_Reduction_Potential
+:TITLE Emission Reduction Potential
+:SCALE
+:VAR Emission Reduction Potential
+:DATASET BAU.vdfx
+:LINE-WIDTH 1
+:VAR Emission Reduction Potential
+:DATASET Regulatory Push.vdfx
+:LINE-WIDTH 1
+:VAR Emission Reduction Potential
+:DATASET Technical Push.vdfx
+:LINE-WIDTH 1
+:VAR Emission Reduction Potential
+:DATASET Integrated Pathway.vdfx
+:LINE-WIDTH 1
+:L<%^E!@
+1:Integrated Pathway.vdfx
+1:Regulatory Push.vdfx
+1:Technical Push.vdfx
+1:BAU.vdfx
+4:Time
+5:SLB Deployment
+9:Integrated Pathway
+19:61,0
+24:0
+25:100
+26:100
+23:0
+18:Sensiticity all.vsc
+20:slb.lst
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

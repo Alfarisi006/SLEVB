@@ -1,0 +1,351 @@
+{UTF-8}
+"Battery refurbishment capability (T2)"  = A FUNCTION OF( "Investment flow and capital availability (E1)"\
+		)
+	~	
+	~		|
+
+"Consumer trust and acceptance (S1)."  = A FUNCTION OF( Safety Incident Risk)
+	~	
+	~		|
+
+Operational Stress  = A FUNCTION OF( SLB Deployment)
+	~	
+	~		|
+
+"Digital traceability systems (R3)B"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Compliance with safety standards (T3)"  = A FUNCTION OF( "SoH Diagnostic Accuracy (T1)"\
+		)
+	~	
+	~		|
+
+"Compliance with safety standards (T3)B"  = A FUNCTION OF( "Digital traceability systems (R3)B"\
+		,Safety Incident Risk)
+	~	
+	~		|
+
+SLB Deployment  = A FUNCTION OF( "Market demand stability (E2)B.") ~~|
+SLB Deployment  = A FUNCTION OF( "Market demand stability (E2).") ~~|
+SLB Deployment  = A FUNCTION OF( "Market demand stability (E2). ")
+	~	
+	~		|
+
+"Market demand stability (E2)B."  = A FUNCTION OF( "Cost-efficiency and residual value (E3)"\
+		)
+	~	
+	~		|
+
+"Consumer trust and acceptance (S1)"  = A FUNCTION OF( "Compliance with safety standards (T3)"\
+		)
+	~	
+	~		|
+
+"SoH Diagnostic Accuracy (T1)"  = A FUNCTION OF( "Battery refurbishment capability (T2)"\
+		)
+	~	
+	~		|
+
+Safety Incident Risk  = A FUNCTION OF( "Compliance with safety standards (T3)B",Operational Stress\
+		,"SoH diagnostic accuracy (T1)B")
+	~	
+	~		|
+
+"SoH diagnostic accuracy (T1)B"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Energy efficiency of repurposed systems (EN3) "  = A FUNCTION OF( )
+	~	
+	~		|
+
+Cost Pressure  = A FUNCTION OF( Operational complexity)
+	~	
+	~		|
+
+"Cost-efficiency and residual value (E3)"  = A FUNCTION OF( Cost Pressure)
+	~	
+	~		|
+
+"Certification and standardization protocols (R2)."  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Compliance with safety standards (T3) "  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Lifecycle carbon intensity reduction (EN1)"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Consumer trust and acceptance (S1) ."  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Emission reduction potential (EN2) "  = A FUNCTION OF( "Energy efficiency of repurposed systems (EN3) "\
+		,"Lifecycle carbon intensity reduction (EN1)","SLB Deployment .")
+	~	
+	~		|
+
+"Consumer trust and acceptance (S1). "  = A FUNCTION OF( "Certification and standardization protocols (R2)."\
+		,"Compliance with safety standards (T3) ","Digital traceability systems (R3).")
+	~	
+	~		|
+
+"SLB Deployment ."  = A FUNCTION OF( )
+	~	
+	~		|
+
+Operational complexity  = A FUNCTION OF( SLB Deployment)
+	~	
+	~		|
+
+"Digital traceability systems (R3)."  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Cost-efficiency and residual value (E3)."  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Market demand stability (E2) ."  = A FUNCTION OF( "Consumer trust and acceptance (S1) ."\
+		,"Cost-efficiency and residual value (E3).")
+	~	
+	~		|
+
+"Certification and standardization protocols (R2) "  = A FUNCTION OF( "Digital traceability systems (R3) "\
+		)
+	~	
+	~		|
+
+"Consumer trust and acceptance (S1) "  = A FUNCTION OF( "Certification and standardization protocols (R2) "\
+		)
+	~	
+	~		|
+
+"Digital traceability systems (R3) "  = A FUNCTION OF( "Investment flow and capital availability (E1) "\
+		)
+	~	
+	~		|
+
+"Emission reduction potential (EN2)"  = A FUNCTION OF( SLB Deployment)
+	~	
+	~		|
+
+"Investment flow and capital availability (E1) "  = A FUNCTION OF( "Market demand stability (E2) "\
+		)
+	~	
+	~		|
+
+"Investment flow and capital availability (E1)"  = A FUNCTION OF( "Market demand stability (E2)"\
+		)
+	~	
+	~		|
+
+"Investment flow and capital availability (E1)."  = A FUNCTION OF( "Policy incentives for second-life deployment (R1)"\
+		)
+	~	
+	~		|
+
+"Market demand stability (E2) "  = A FUNCTION OF( "Consumer trust and acceptance (S1) "\
+		)
+	~	
+	~		|
+
+"Market demand stability (E2)"  = A FUNCTION OF( "Consumer trust and acceptance (S1)"\
+		)
+	~	
+	~		|
+
+Policy Credibility  = A FUNCTION OF( "Emission reduction potential (EN2)")
+	~	
+	~		|
+
+"Policy incentives for second-life deployment (R1)"  = A FUNCTION OF( Policy Credibility\
+		)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Technical Confidence Loop
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Consumer trust and acceptance (S1)",250,282,53,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Market demand stability (E2)",437,292,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Investment flow and capital availability (E1)",481,442,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(363,268)|
+1,5,2,3,1,0,43,0,0,192,0,-1--1--1,,1|(477,344)|
+12,6,0,318,423,32,32,4,7,0,32,-1,0,0,0,0-0-0,-1--1--1,|||255-255-255,0,0,0,0,0,0
+R
+10,7,"SoH Diagnostic Accuracy (T1)",155,501,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,"Compliance with safety standards (T3)",151,370,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,7,8,1,0,43,0,0,192,0,-1--1--1,,1|(136,434)|
+1,10,8,1,1,0,43,0,0,192,0,-1--1--1,,1|(160,319)|
+10,11,"Battery refurbishment capability (T2)",357,568,65,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,12,3,11,1,0,43,0,0,192,0,-1--1--1,,1|(469,509)|
+1,13,11,7,1,0,43,0,0,192,0,-1--1--1,,1|(251,575)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Regulatory Legitimacy Loop
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Certification and standardization protocols (R2) ",146,255,76,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Consumer trust and acceptance (S1) ",339,157,53,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Market demand stability (E2) ",521,264,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Investment flow and capital availability (E1) ",475,447,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,"Digital traceability systems (R3) ",219,448,48,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,6,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(184,193)|
+1,7,2,3,1,0,43,0,0,192,0,-1--1--1,,1|(465,180)|
+1,8,3,4,1,0,43,0,0,192,0,-1--1--1,,1|(532,348)|
+1,9,4,5,1,0,43,0,0,192,0,-1--1--1,,1|(356,494)|
+1,10,5,1,1,0,43,0,0,192,0,-1--1--1,,1|(147,380)|
+12,11,0,343,307,32,32,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Policy Support
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Policy incentives for second-life deployment (R1)",114,197,61,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Investment flow and capital availability (E1).",281,75,59,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,SLB Deployment,572,216,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Emission reduction potential (EN2)",421,349,51,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,Policy Credibility,193,327,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,6,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(163,110)|
+1,7,3,4,1,0,43,0,0,192,0,-1--1--1,,1|(566,306)|
+1,8,4,5,1,0,43,0,0,192,0,-1--1--1,,1|(302,388)|
+1,9,5,1,1,0,43,0,0,192,0,-1--1--1,,1|(125,291)|
+12,10,0,344,214,46,46,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R
+10,11,"Market demand stability (E2)B.",699,138,51,17,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,12,11,3,0,1,0,0,0,64,0,-1--1--1,,1|(0,0)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Safety Risk Loop
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,Safety Incident Risk,389,97,52,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,SLB Deployment,189,428,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Consumer trust and acceptance (S1).",564,309,53,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,4,2,0,1,0,0,0,64,0,-1--1--1,,1|(0,0)|
+12,6,0,360,290,27,27,4,7,0,2,-1,0,0,0,0-0-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+B
+10,7,"SoH diagnostic accuracy (T1)B",111,64,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,"Compliance with safety standards (T3)B",583,42,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,7,1,1,0,45,0,0,192,0,-1--1--1,,1|(236,38)|
+1,10,1,8,1,0,45,0,0,192,0,-1--1--1,,1|(467,45)|
+10,11,"Digital traceability systems (R3)B",628,201,48,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,3,12,1,0,43,0,0,192,0,-1--1--1,,1|(509,447)|
+1,14,11,8,1,0,45,0,0,192,0,-1--1--1,,1|(639,129)|
+1,15,8,1,1,0,45,0,0,192,0,-1--1--1,,1|(505,76)|
+1,16,1,3,1,0,45,0,0,192,0,-1--1--1,,1|(519,179)|
+10,17,Operational Stress,156,241,50,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(145,341)|
+1,19,17,1,1,0,43,0,0,192,0,-1--1--1,,1|(219,147)|
+10,20,"Market demand stability (E2)B.",299,584,51,17,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,21,20,2,0,1,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,22,12,2,1,0,43,0,0,192,0,-1--1--1,,1|(341,511)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Cost Pressure Loop
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,SLB Deployment,232,451,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Operational complexity,142,202,61,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Cost Pressure,397,110,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Cost-efficiency and residual value (E3)",635,219,50,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,2,3,1,0,43,0,0,192,0,-1--1--1,,1|(186,161)|
+1,6,3,4,1,0,45,0,0,192,0,-1--1--1,,1|(558,148)|
+1,7,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(136,359)|
+12,8,0,393,279,35,35,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B
+10,9,"Market demand stability (E2)B.",591,432,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,10,4,9,1,0,43,0,0,192,0,-1--1--1,,1|(656,326)|
+1,11,9,1,1,0,43,0,0,192,0,-1--1--1,,1|(467,487)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Additional Relationship: Trust Formation
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Certification and standardization protocols (R2).",140,166,78,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Consumer trust and acceptance (S1). ",333,160,53,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Digital traceability systems (R3).",506,255,48,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Compliance with safety standards (T3) ",263,330,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(199,128)|
+1,6,3,2,1,0,43,0,0,192,0,-1--1--1,,1|(425,261)|
+1,7,4,2,1,0,43,0,0,192,0,-1--1--1,,1|(254,240)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Additional Relationship: Economic Formation
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"Cost-efficiency and residual value (E3).",286,227,50,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Market demand stability (E2) .",466,115,63,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Consumer trust and acceptance (S1) .",414,373,53,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(324,172)|
+1,5,3,2,1,0,43,0,0,192,0,-1--1--1,,1|(394,267)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Additional Relationship: Environmental Outcome
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+10,1,"SLB Deployment .",207,340,48,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Emission reduction potential (EN2) ",433,236,51,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Energy efficiency of repurposed systems (EN3) ",515,398,54,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Lifecycle carbon intensity reduction (EN1)",391,540,65,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(284,298)|
+1,6,3,2,1,0,43,0,0,192,0,-1--1--1,,1|(425,367)|
+1,7,4,2,1,0,43,0,0,192,0,-1--1--1,,1|(344,435)|
+///---\\\
+:L<%^E!@
+5:Time
+19:100,2
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
